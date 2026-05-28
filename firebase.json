@@ -1,0 +1,42 @@
+{
+  "hosting": {
+    "public": "build/web",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  },
+  "firestore": {
+    "rules": "firestore.rules"
+  },
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "fincontrol-6b7c9",
+          "appId": "1:512980028270:android:4cc5aebd8c540e91eb4f7f",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "fincontrol-6b7c9",
+          "configurations": {
+            "android": "1:512980028270:android:4cc5aebd8c540e91eb4f7f",
+            "ios": "1:512980028270:ios:52767868de630538eb4f7f",
+            "macos": "1:512980028270:ios:52767868de630538eb4f7f",
+            "web": "1:512980028270:web:360ee8756556c789eb4f7f",
+            "windows": "1:512980028270:web:543b087cdf5fdaa5eb4f7f"
+          }
+        }
+      }
+    }
+  }
+}

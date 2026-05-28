@@ -1,91 +1,46 @@
-# FinControl - Aplicativo de Gestão Financeira
+# FinControl Firebase - Projeto Prático Parte 2
 
-## Descrição
-FinControl é um aplicativo desenvolvido em Flutter para gerenciamento financeiro pessoal. O aplicativo permite que o usuário registre e organize despesas, receitas, orçamentos e metas, com dados armazenados de forma segura no Firebase.  
+Projeto Flutter adaptado para Firebase Authentication, Cloud Firestore, API REST pública e Firebase Hosting.
 
-O design é intuitivo, com feedback visual claro para todas as ações do usuário, garantindo uma experiência de uso eficiente.
+## O que foi implementado
 
----
+- RF001: Login com Firebase Authentication e recuperação de senha por e-mail.
+- RF002: Cadastro com e-mail/senha e campos adicionais em `usuarios`: nome, telefone e cidade.
+- RF003: Inserção no Firestore em duas coleções principais: `transactions` e `goals`, ambas com pelo menos cinco campos e `userId`.
+- RF004: Atualização de transações e metas.
+- RF005: Recuperação em tempo real com `StreamBuilder` e `ListView`.
+- RF006: Tela exclusiva de pesquisa em transações, sem diferenciar maiúsculas/minúsculas e com opções de ordenação.
+- RF007: Consumo de API pública de cotação USD-BRL.
+- Firebase Hosting configurado em `firebase.json`.
 
-## Funcionalidades
+## Antes de executar
 
-### Autenticação de Usuários (RF001)
-- Login e logout com Firebase Authentication.
-- Recuperação de senha via e-mail.
-- Feedback claro para progresso e erros durante o login.
+1. Crie um projeto no Firebase.
+2. Ative Authentication > Email/senha.
+3. Crie o Firestore Database.
+4. Rode:
 
-### Registro de Usuários (RF002)
-- Cadastro de novos usuários com e-mail, senha e informações adicionais (nome, telefone).
-- Validação de senha para garantir segurança.
-- Armazenamento seguro de informações na coleção `usuarios` do Firestore.
+```bash
+dart pub global activate flutterfire_cli
+flutterfire configure
+```
 
-### Inserção de Dados (RF003)
-- Cadastro de **orçamentos**, **despesas**, **receitas** e **metas**.
-- Cada coleção possui pelo menos cinco campos.
-- Feedback imediato de sucesso ou falha na inserção.
-- Dados vinculados ao usuário logado.
+Esse comando deve substituir `lib/firebase_options.dart` com as credenciais reais do seu Firebase.
 
-### Atualização de Dados (RF004)
-- Edição de registros existentes em múltiplas coleções.
-- Feedback claro em caso de falha.
-- Alterações refletidas de forma consistente no Firestore.
+## Executar
 
-### Recuperação de Dados (RF005)
-- Exibição de informações em tempo real usando `StreamBuilder`.
-- Uso de `ListView` e `GridView` para visualização organizada.
-- Recuperação de dados em duas ou mais coleções.
-
-### Pesquisa de Dados (RF006)
-- Sistema de busca eficiente em coleções selecionadas.
-- Resultados podem ser ordenados por data, relevância ou ordem alfabética.
-- Pesquisa não diferencia maiúsculas e minúsculas.
-
-### Consumo de API (RF007)
-- Integração com APIs públicas para obter dados externos (ex.: cotações financeiras, clima ou outros serviços).
-
----
-
-## Tecnologias Utilizadas
-- Flutter SDK
-- Firebase Authentication
-- Firebase Firestore
-- Widgets Flutter: `StreamBuilder`, `ListView`, `GridView`
-- Gerenciamento de estado: Provider
-
----
-
-## Estrutura do Projeto
-
-/lib/screens/ → Telas do aplicativo
-/lib/models/ → Modelos de dados (Budget, Transaction, Goal, User)
-/lib/providers/ → Providers para gerenciamento de estado
-/lib/services/ → Serviços de comunicação com Firebase/API
-/lib/core/ → Rotas, constantes e tema do app
-
-
----
-
-## Instalação
-1. Clone o repositório:
-
-git clone https://github.com/exemplo/fincontrol.git
-
-
-2. Instale as dependências:
-
+```bash
 flutter pub get
+flutter run -d chrome
+```
 
+## Publicar no Firebase Hosting
 
-3. Configure o Firebase:
-- Adicione o `google-services.json` (Android) ou `firebase_options.dart` (iOS/Web) no projeto.
+```bash
+flutter build web
+firebase login
+firebase init hosting
+firebase deploy
+```
 
-4. Execute o aplicativo:
-
-flutter run
-
-
----
-
-## Créditos
-- Desenvolvido por: Carlos Chen e Felipe Savegnago
-- RA: 2840482421030 e 2840482421034
+Na pergunta da pasta pública, use `build/web`.
